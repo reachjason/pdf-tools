@@ -1,0 +1,11 @@
+# Outputs are local artifacts, never pushed (keep the folder, ignore contents)
+outputs/*
+!outputs/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.DS_Store
