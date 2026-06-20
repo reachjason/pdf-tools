@@ -51,7 +51,10 @@ def main(argv: list[str] | None = None) -> int:
     add_record(record)
     print(f"OK: {record.get('output', '(no output)')}")
     if "pages" in record and "chars" in record:
-        print(f"     {record['pages']} pages, {record['chars']} chars")
+        print(
+            f"     {record['pages']} pages, "
+            f"{record.get('words', 0)} words, {record['chars']} chars"
+        )
     return 0
 
 

@@ -57,6 +57,7 @@ def run(argv: list[str]) -> dict:
         "input": str(input_path),
         "output": str(output_path),
         "pages": len(reader.pages),
+        "words": len(text.split()),
         "chars": len(text),
         "status": "ok",
     }
