@@ -13,14 +13,14 @@ def _usage() -> str:
     lines = [
         f"pdf-tools {__version__}",
         "",
-        "Usage: python -m pdftools <tool> [args...]",
+        "Usage: pdftools <tool> [args...]",
         "",
         "Available tools:",
     ]
     for name, module in TOOLS.items():
         lines.append(f"  {name:<12} {getattr(module, 'HELP', '')}")
     lines.append("")
-    lines.append("Run a tool with -h for its options, e.g. python -m pdftools pdf2txt -h")
+    lines.append("Run a tool with -h for its options, e.g. pdftools pdf2txt -h")
     return "\n".join(lines)
 
 

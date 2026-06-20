@@ -1,0 +1,17 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pdf-tools"
+version = "0.1.0"
+description = "An extensible local toolkit for working with PDFs (pdf2txt, and more to come)."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = ["pypdf>=4.0"]
+
+[project.scripts]
+pdftools = "pdftools.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["pdftools"]

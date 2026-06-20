@@ -13,26 +13,33 @@ is recorded in an index so you have an audit trail of what's been processed.
 More tools (split, merge, OCR, PDF→images, …) can be dropped in over time — see
 [Adding a tool](#adding-a-tool).
 
-## Setup
+## Install
+
+Install once with [pipx](https://pipx.pypa.io/) — it puts a global `pdftools`
+command on your PATH in an isolated environment (no venv juggling):
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+pipx install --editable .
 ```
+
+`--editable` means new subtools added to the registry are available immediately,
+with no reinstall.
+
+> Prefer not to install? You can still run it from the repo with
+> `python -m pdftools <tool> ...` (requires `pip install -r requirements.txt`).
 
 ## Usage
 
 ```bash
 # Extract text -> outputs/<name>.txt
-python -m pdftools pdf2txt path/to/document.pdf
+pdftools pdf2txt path/to/document.pdf
 
 # Custom output path
-python -m pdftools pdf2txt document.pdf -o /tmp/out.txt
+pdftools pdf2txt document.pdf -o /tmp/out.txt
 
 # List tools / get help
-python -m pdftools --help
-python -m pdftools pdf2txt --help
+pdftools --help
+pdftools pdf2txt --help
 ```
 
 ## Outputs & the index
@@ -66,4 +73,5 @@ python -m pdftools pdf2txt --help
 1. Create `pdftools/tools/<your_tool>.py` exposing `NAME`, `HELP`, and
    `run(argv: list[str]) -> dict` (the dict is recorded in the index).
 2. Register it in `pdftools/tools/__init__.py` (`TOOLS`).
-3. Done — it's now available as `python -m pdftools <NAME>`.
+3. Done — because the install is editable, it's instantly available as
+   `pdftools <NAME>`. No reinstall needed.
